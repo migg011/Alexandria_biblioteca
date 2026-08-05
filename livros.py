@@ -10,7 +10,14 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
 
 # Lógica de edição...
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
-    pass
+    for livro in acervo:
+        if livro['codigo'] == codigo:
+            if novo_titulo:
+                livro['titulo'] = novo_titulo
+            if novo_autor:
+                livro['autor'] = novo_autor
+            if nova_quantidade:
+                livro['quantidade'] = nova_quantidade
 
 # Lógica de remoção...
 def remover_livro(acervo, codigo):
