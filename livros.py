@@ -1,15 +1,21 @@
+# Lógica de cadastro...
 def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
-    # Lógica de cadastro...
-    pass
+    novo_livro = {
+        'codigo': codigo,
+        'titulo': titulo,
+        'autor': autor,
+        'quantidade': quantidade
+    }
+    acervo.append(novo_livro)
 
+# Lógica de edição...
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
-    # Lógica de edição...
     pass
 
+# Lógica de remoção...
 def remover_livro(acervo, codigo):
-    # Lógica de remoção...
     pass
 
+# Lógica de listagem...
 def listar_livros(acervo):
-    # Lógica de listagem...
     pass
