@@ -22,10 +22,14 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
     for livro in acervo:
         if livro['codigo'] == codigo:
-            if novo_titulo:
-                livro['titulo'] = novo_titulo
-            if novo_autor:
-                livro['autor'] = novo_autor
+            if novo_titulo is not None:
+                if novo_titulo.strip() == "":
+                    return
+                livro['titulo'] = novo_titulo.strip()
+
+            if novo_autor is not None:
+                livro['autor'] = novo_autor.strip()
+
             if nova_quantidade:
                 livro['quantidade'] = nova_quantidade
 
