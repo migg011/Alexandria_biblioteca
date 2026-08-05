@@ -1,5 +1,15 @@
-# Lógica de cadastro...
+# Lógica de cadastro
 def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
+    for livro in acervo:
+        if livro['codigo'] == codigo:
+            return
+
+    if not titulo or titulo.strip() == "":
+        return
+
+    if quantidade <= 0:
+        return
+
     novo_livro = {
         'codigo': codigo,
         'titulo': titulo,
@@ -8,7 +18,7 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
     }
     acervo.append(novo_livro)
 
-# Lógica de edição...
+# Lógica de edição
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
     for livro in acervo:
         if livro['codigo'] == codigo:
@@ -19,13 +29,13 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
             if nova_quantidade:
                 livro['quantidade'] = nova_quantidade
 
-# Lógica de remoção...
+# Lógica de remoção
 def remover_livro(acervo, codigo):
     for i, livro in enumerate(acervo):
         if livro['codigo'] == codigo:
             acervo.pop(i)
 
-# Lógica de listagem...
+# Lógica de listagem
 def listar_livros(acervo):
     for livro in acervo:
         print(livro)
