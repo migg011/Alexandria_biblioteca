@@ -1,11 +1,6 @@
-from usuarios import buscar_usuario
-from livros import buscar_livro
-
-emprestimos = []
-
 def realizar_emprestimo():
     cod_usuario = int(input("Código do usuario: "))
-    cod_livro = int(input("Código do livro:" )
+    cod_livro = int(input("Código do livro:"))  # Corrigido
 
     usuario = buscar_usuario(cod_usuario)
     livro = buscar_livro(cod_livro)
@@ -15,6 +10,6 @@ def realizar_emprestimo():
         "livro": livro
     })
 
-    livro ["quantidade"] -= 1
+    livro["quantidade"] -= 1
 
     print("Emprestimo realizado")

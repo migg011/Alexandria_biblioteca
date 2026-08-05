@@ -15,4 +15,4 @@ def buscar_usuario(codigo):
         if usuario["codigo"] == codigo:
             return usuario
 
-return None
+    return None
