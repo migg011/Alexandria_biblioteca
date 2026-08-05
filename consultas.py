@@ -20,14 +20,30 @@ def buscar_por_titulo_completo(acervo: List[Dict[str, Any]], titulo: str) -> Opt
         if str(livro.get("titulo", "")).strip().lower() == titulo_busca:
             return livro
     return None
-def buscar_por_titulo_parcia():
-    pass
+def buscar_por_titulo_parcial(acervo: List[Dict[str, Any]], termo: str) -> List[Dict[str, Any]]:
 
-def filtrar_por_categoria():
-    pass
+    termo_busca = termo.strip().lower()
+    if not termo_busca:
+        return []
+    return [
+        livro for livro in acervo
+        if termo_busca in str(livro.get("titulo", "")).lower()
+    ]
 
-def filtrar_por_disponibilidade():
-    pass
+def filtrar_por_categoria(acervo: List[Dict[str, Any]], categoria: str) -> List[Dict[str, Any]]:
+
+    categoria_busca = categoria.strip().lower()
+    return [
+        livro for livro in acervo
+        if str(livro.get("categoria", "")).strip().lower() == categoria_busca
+    ]
+
+def filtrar_por_disponibilidade(acervo: List[Dict[str, Any]], apenas_disponiveis: bool = True) -> List[Dict[str, Any]]:
+
+    return [
+        livro for livro in acervo
+        if (livro.get("disponivel", False) and livro.get("quantidade", 0) > 0) == apenas_disponiveis
+    ]
 
 def consultar_acervo():
     pass
