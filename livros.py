@@ -21,7 +21,9 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
 
 # Lógica de remoção...
 def remover_livro(acervo, codigo):
-    pass
+    for i, livro in enumerate(acervo):
+        if livro['codigo'] == codigo:
+            acervo.pop(i)
 
 # Lógica de listagem...
 def listar_livros(acervo):
