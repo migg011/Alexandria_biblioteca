@@ -30,7 +30,9 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
             if novo_autor is not None:
                 livro['autor'] = novo_autor.strip()
 
-            if nova_quantidade:
+            if nova_quantidade is not None:
+                if nova_quantidade <= 0:
+                    return
                 livro['quantidade'] = nova_quantidade
 
 # Lógica de remoção
