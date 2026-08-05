@@ -27,4 +27,5 @@ def remover_livro(acervo, codigo):
 
 # Lógica de listagem...
 def listar_livros(acervo):
-    pass
+    for livro in acervo:
+        print(livro)
