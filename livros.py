@@ -57,10 +57,14 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
 
 # Lógica de remoção
 def remover_livro(acervo, codigo):
+#Remove um livro do acervo utilizando o código
     for i, livro in enumerate(acervo):
         if livro['codigo'] == codigo:
-            acervo.pop(i)
+            livro_removido = acervo.pop(i)
+            print(f"Sucesso: Livro '{livro_removido['titulo']}' removido do acervo.")
             return True
+
+    print(f"Erro: Livro com código '{codigo}' não encontrado para remoção.")
     return False
 
 # Lógica de listagem
