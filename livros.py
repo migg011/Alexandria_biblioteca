@@ -1,13 +1,17 @@
 # Lógica de cadastro
 def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
+#Cadastra um novo livro no acervo apos validar os dados fornecidos
     for livro in acervo:
         if livro['codigo'] == codigo:
+            print(f"Erro: O código '{codigo}' já está cadastrado.")
             return False
 
     if not titulo or titulo.strip() == "":
+        print("Erro: O título do livro não pode ser vazio.")
         return False
 
     if quantidade <= 0:
+        print("Erro: A quantidade deve ser um número maior que zero.")
         return False
 
     novo_livro = {
@@ -17,6 +21,7 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
         'quantidade': quantidade
     }
     acervo.append(novo_livro)
+    print(f"Sucesso: Livro '{titulo}' cadastrado com sucesso!")
     return True
 
 # Lógica de edição
