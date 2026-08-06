@@ -26,6 +26,7 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
 
 # Lógica de edição
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
+    """Edita informacoes de um livro cadastrado no acervo."""
     livro_encontrado = None
     for livro in acervo:
         if livro['codigo'] == codigo:
@@ -33,10 +34,12 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
             break
 
     if not livro_encontrado:
+        print(f"Erro: Livro com código '{codigo}' não foi encontrado.")
         return False
 
     if novo_titulo is not None:
         if novo_titulo.strip() == "":
+            print("Erro: O título não pode ser alterado para um valor vazio.")
             return False
         livro_encontrado['titulo'] = novo_titulo.strip()
 
@@ -45,9 +48,11 @@ def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantid
 
     if nova_quantidade is not None:
         if nova_quantidade <= 0:
+            print("Erro: A quantidade deve ser maior que zero.")
             return False
         livro_encontrado['quantidade'] = nova_quantidade
 
+    print(f"Sucesso: Dados do livro com código '{codigo}' atualizados.")
     return True
 
 # Lógica de remoção
