@@ -55,5 +55,9 @@ def remover_livro(acervo, codigo):
 
 # Lógica de listagem
 def listar_livros(acervo):
+    if not acervo:
+        return False
+
     for livro in acervo:
         print(livro)
+    return True
