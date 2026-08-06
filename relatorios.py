@@ -21,7 +21,27 @@ def registrar_devolucao(self, id_emprestimo: int) -> str:
 
 
 def gerar_relatorio_totais(self):
-    pass
+    total_titulos =len(self.titulos)
+    total_exemplars =len(self.acervo)
 
-def relatorio():
-    pass
+    disponivel = sum(1 for ex  in self.acervo.value() if ex['status'] == 'disponivel')
+    emprestimos = sum(1 for ex in self.acervo.value() if ex['status'] ==  'emprestado')
+
+    relatorio = {
+        'total_titulos': total_titulos,
+        'total_exemplars': total_exemplars,
+        'disponivel': disponivel,
+        'emprestimos': emprestimos,
+    }
+    return relatorio
+
+def imprimir_relatorio(self):
+
+    dados = self.gerar_relatorio_totais()
+    print("-" * 40 )
+
+    print("RELATORIO DE STATUS  DO ACERVO")
+    print("-" * 40 )
+    for chave, valor in dados.items():
+        print(f"{chave}: {valor}")
+    print("-" * 40 )
