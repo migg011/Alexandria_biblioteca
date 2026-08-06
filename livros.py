@@ -26,7 +26,7 @@ def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
 
 # Lógica de edição
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
-    """Edita informacoes de um livro cadastrado no acervo."""
+#Edita informacoes de um livro cadastrado no acervo
     livro_encontrado = None
     for livro in acervo:
         if livro['codigo'] == codigo:
