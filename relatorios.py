@@ -18,5 +18,10 @@ def registrar_devolucao(self, id_emprestimo: int) -> str:
     else:
         raise ValueError("ERRO: O exemplar associado a este  emprestimo nao existe no acervo ")
 
+
+
+def gerar_relatorio_totais(self):
+    pass
+
 def relatorio():
     pass
