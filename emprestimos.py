@@ -1,9 +1,12 @@
+from usuarios import buscar_usuario
+from livros import listar_livros
+
 def realizar_emprestimo():
     cod_usuario = int(input("Código do usuario: "))
     cod_livro = int(input("Código do livro:"))  # Corrigido
 
     usuario = buscar_usuario(cod_usuario)
-    livro = buscar_livro(cod_livro)
+    livro =listar_livros(cod_livro)
 
     if livro is None:
         print("Livro não encontrado.")

@@ -1,6 +1,5 @@
 usuarios = []
 
-
 def cadastrar_usuario():
     codigo = int(input("Código: "))
 
