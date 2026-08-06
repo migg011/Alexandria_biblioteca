@@ -50,6 +50,8 @@ def remover_livro(acervo, codigo):
     for i, livro in enumerate(acervo):
         if livro['codigo'] == codigo:
             acervo.pop(i)
+            return True
+    return False
 
 # Lógica de listagem
 def listar_livros(acervo):
