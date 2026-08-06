@@ -69,9 +69,12 @@ def remover_livro(acervo, codigo):
 
 # Lógica de listagem
 def listar_livros(acervo):
+#Exibe no terminal a lista de livros cadastrados
     if not acervo:
-        return False
+        print("O acervo está vazio.")
+        return
 
+    print("\n--- Acervo de Livros ---")
     for livro in acervo:
-        print(livro)
-    return True
+        print(f"Código: {livro['codigo']} | Título: {livro['titulo']} | Autor: {livro['autor']} | Qtd: {livro['quantidade']}")
+    print("------------------------\n")
