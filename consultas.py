@@ -45,7 +45,33 @@ def filtrar_por_disponibilidade(acervo: List[Dict[str, Any]], apenas_disponiveis
         if (livro.get("disponivel", False) and livro.get("quantidade", 0) > 0) == apenas_disponiveis
     ]
 
-def consultar_acervo():
-    pass
+def consultar_acervo(
+    acervo: List[Dict[str, Any]],
+    termo_titulo: Optional[str] = None,
+    autor: Optional[str] = None,
+    categoria: Optional[str] = None,
+    disponivel: Optional[bool] = None
+) -> List[Dict[str, Any]]:
+    resultados = acervo.copy()
+
+    if termo_titulo:
+        termo = termo_titulo.strip().lower()
+        resultados = [l for l in resultados if termo in str(l.get("titulo", "")).lower()]
+
+    if autor:
+        termo_autor = autor.strip().lower()
+        resultados = [l for l in resultados if termo_autor in str(l.get("autor", "")).lower()]
+
+    if categoria:
+        cat = categoria.strip().lower()
+        resultados = [l for l in resultados if str(l.get("categoria", "")).strip().lower() == cat]
+
+    if disponivel is not None:
+        resultados = [
+            l for l in resultados
+            if (l.get("disponivel", False) and l.get("quantidade", 0) > 0) == disponivel
+        ]
+
+    return resultados
 
 
