@@ -1,8 +1,7 @@
-from Alexandria_biblioteca.emprestimos import emprestimos
-
+from emprestimos import  realizar_emprestimo
 
 def registrar_devolucao(self, id_emprestimo: int) -> str:
-    emprestimo = emprestimos[id_emprestimo]
+    emprestimo = realizar_emprestimo()[id_emprestimo]
 
     if not emprestimo:
         raise ValueError("emprestimo nao encontrado")
