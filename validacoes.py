@@ -21,12 +21,12 @@ def ler_inteiro(mensagem, min_val=None, max_val=None):
 
 
 def ler_texto(mensagem):
-    """Lê uma string obrigatória, sem aceitar vazios ou apenas espaços em branco."""
+#Lê uma string obrigatória. Garante que o usuário não deixe o campo vazio ou apenas com espaços
     while True:
-        entrada = input(mensagem).strip()
-        if entrada:
-            return entrada
-        print("Erro: O campo não pode ficar vazio. Tente novamente.")
+        texto = input(mensagem).strip()
+        if texto:
+            return texto
+        print("Entrada inválida! Este campo não pode ficar em branco.")
 
 
 def pedir_confirmacao(mensagem):
