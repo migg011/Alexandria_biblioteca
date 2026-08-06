@@ -5,6 +5,7 @@ def exibir_menu():
     print("=" * 36)
     # opcoes do menu
     print("0 - Sair")
+    print("1 - Cadastrar livro")
     print("7 - Histórico do usuário")
     print("=" * 36)
 
