@@ -2,21 +2,22 @@
 def cadastrar_livro(acervo, codigo, titulo, autor, quantidade):
     for livro in acervo:
         if livro['codigo'] == codigo:
-            return
+            return False
 
     if not titulo or titulo.strip() == "":
-        return
+        return False
 
     if quantidade <= 0:
-        return
+        return False
 
     novo_livro = {
         'codigo': codigo,
-        'titulo': titulo,
-        'autor': autor,
+        'titulo': titulo.strip(),
+        'autor': autor.strip(),
         'quantidade': quantidade
     }
     acervo.append(novo_livro)
+    return True
 
 # Lógica de edição
 def editar_livro(acervo, codigo, novo_titulo=None, novo_autor=None, nova_quantidade=None):
