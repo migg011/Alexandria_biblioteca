@@ -3,6 +3,11 @@ usuarios = []
 
 def cadastrar_usuario():
     codigo = int(input("Código: "))
+
+    if buscar_usuario(codigo):
+        print("Código já cadastrado.")
+        return
+
     nome = input("Nome: ")
 
     usuarios.append({
@@ -16,3 +21,12 @@ def buscar_usuario(codigo):
             return usuario
 
     return None
+
+
+def listar_usuarios():
+    if not usuarios:
+        print("Nenhum usuário cadastrado.")
+        return
+
+    for usuario in usuarios:
+        print(f"Código: {usuario['codigo']} | Nome: {usuario['nome']}")
