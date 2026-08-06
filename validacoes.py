@@ -30,11 +30,14 @@ def ler_texto(mensagem):
 
 
 def pedir_confirmacao(mensagem):
-    """Pede confirmação do tipo Sim/Não. Retorna True para 's'/'sim' e False para 'n'/'não'."""
+#Pede confirmação do tipo Sim/Não ao usuário.
+#Retorna True para 'S' / 'Sim' e False para 'N' / 'Não'.
+
     while True:
-        resposta = input(f"{mensagem} (S/N): ").strip().lower()
-        if resposta in ["s", "sim"]:
+        resposta = input(f"{mensagem} (S/N): ").strip().upper()
+        if resposta in ['S', 'SIM']:
             return True
-        elif resposta in ["n", "nao", "não"]:
+        elif resposta in ['N', 'NAO', 'NÃO']:
             return False
-        print("Erro: Resposta inválida. Por favor, responda com 'S' para Sim ou 'N' para Não.")
+        else:
+            print("Resposta inválida! Digite 'S' para Sim ou 'N' para Não.")
