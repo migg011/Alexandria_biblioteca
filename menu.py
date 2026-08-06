@@ -1,4 +1,5 @@
 def exibir_menu():
+    """Exibe no console o cabeçalho e as opções disponíveis do sistema."""
     print("=" * 36)
     print("         SISTEMA DE BIBLIOTECA")
     print("=" * 36)
@@ -9,6 +10,10 @@ def exibir_menu():
 
 
 def ler_opcao():
+    """Lê a entrada do usuário, remove espaços e valida se é um número inteiro.
+
+    Retorna o valor convertido em int ou None caso a entrada seja inválida.
+    """
     try:
         entrada = input("Escolha uma opção: ").strip()
         if not entrada:

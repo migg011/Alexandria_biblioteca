@@ -2,21 +2,22 @@ from menu import exibir_menu, ler_opcao
 
 
 def main():
+    """Ponto de entrada do sistema. Controla o laço principal e o direcionamento das opções."""
     while True:
         exibir_menu()
         opcao = ler_opcao()
 
         if opcao is None:
-            print("Erro: Entrada inválida. Por favor, insira um número válido.")
+            print("[Aviso] Entrada inválida. Digite apenas o número de uma das opções.")
             continue
 
         if opcao == 0:
-            print("Saindo do sistema...")
+            print("Encerrando o sistema da biblioteca. Até logo!")
             break
         elif opcao == 7:
-            print("[Módulo] Histórico do usuário selecionado.")
+            print("[Info] Módulo de histórico do usuário selecionado.")
         else:
-            print(f"Opção {opcao} informada é inválida ou pendente de integração.")
+            print(f"[Aviso] A opção {opcao} é inválida ou ainda não foi integrada pelos colegas.")
 
 
 if __name__ == "__main__":
