@@ -9,7 +9,10 @@ def exibir_menu():
 
 
 def ler_opcao():
-    opcao = input("Escolha uma opção: ").strip()
-    if opcao.isdigit():
-        return int(opcao)
-    return -1
+    try:
+        entrada = input("Escolha uma opção: ").strip()
+        if not entrada:
+            raise ValueError("A entrada não pode ser vazia.")
+        return int(entrada)
+    except ValueError:
+        return None
