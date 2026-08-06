@@ -9,5 +9,7 @@ def exibir_menu():
 
 
 def ler_opcao():
-    opcao = input("Escolha uma opção: ")
-    return opcao
+    opcao = input("Escolha uma opção: ").strip()
+    if opcao.isdigit():
+        return int(opcao)
+    return -1
