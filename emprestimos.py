@@ -12,4 +12,13 @@ def realizar_emprestimo():
 
     livro["quantidade"] -= 1
 
+    if usuario is None:
+        print("Usuário não encontrado.")
+        return
+
+    if livro is None:
+        print("Livro não encontrado.")
+        return
+
     print("Emprestimo realizado")
+
