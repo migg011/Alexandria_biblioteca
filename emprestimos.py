@@ -1,13 +1,18 @@
-# Importar a função correta do módulo consultas
 from consultas import buscar_por_codigo
+from usuarios import buscar_usuario
 
 
 def realizar_emprestimo(cod_usuario, cod_livro, usuarios, livros, emprestimos):
-    # 1. Busca os registros
-    usuario = buscar_por_codigo(cod_usuario)  # Ajuste conforme a função de busca de usuário usada no projeto
-    livro = buscar_por_codigo(cod_livro)  # CORREÇÃO 1: Utiliza buscar_por_codigo em vez de listar_livros
+    # 1. Busca os registros passando os parâmetros necessários
+    try:
+        cod_usr_num = int(cod_usuario)
+    except ValueError:
+        cod_usr_num = cod_usuario
 
-    # 2. CORREÇÃO 2: Validações de None no INÍCIO, antes de acessar propriedades
+    usuario = buscar_usuario(cod_usr_num)
+    livro = buscar_por_codigo(livros, cod_livro)
+
+    # 2. Validações de existência dos registros
     if usuario is None:
         print("Erro: Usuário não encontrado.")
         return False
@@ -16,14 +21,21 @@ def realizar_emprestimo(cod_usuario, cod_livro, usuarios, livros, emprestimos):
         print("Erro: Livro não encontrado.")
         return False
 
-    # 3. Acesso seguro às chaves do dicionário somente após confirmar que não é None
-    if livro["quantidade"] <= 0:
+    # 3. Acesso seguro à quantidade disponível
+    if livro.get("quantidade", 0) <= 0:
         print("Erro: Não há exemplares disponíveis deste livro.")
         return False
 
-    # Lógica de registro do empréstimo...
+    # 4. Atualização do acervo e registro do empréstimo
     livro["quantidade"] -= 1
-    # ... adiciona ao dicionário/lista de empréstimos ...
 
-    print("Empréstimo realizado com sucesso!")
+    novo_emprestimo = {
+        "id": len(emprestimos) + 1,
+        "cod_usuario": cod_usuario,
+        "cod_livro": cod_livro,
+        "devolvido": False
+    }
+    emprestimos.append(novo_emprestimo)
+
+    print(f"Sucesso: Empréstimo do livro '{livro.get('titulo')}' realizado para {usuario.get('nome')}!")
     return True
