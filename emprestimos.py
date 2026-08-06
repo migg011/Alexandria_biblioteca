@@ -1,3 +1,5 @@
+from usuarios import buscar_usuarios
+
 def realizar_emprestimo():
     cod_usuario = int(input("Código do usuario: "))
     cod_livro = int(input("Código do livro:"))  # Corrigido
