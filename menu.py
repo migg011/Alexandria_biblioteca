@@ -9,6 +9,8 @@ def exibir_menu():
     print("2 - Listar e buscar livros")
     print("3 - Cadastrar usuário")
     print("4 - Realizar empréstimo")
+    print("5 - Realizar devolucao")
+    print("6 - Exibir relatorios")
     print("7 - Histórico do usuário")
     print("=" * 36)
 
