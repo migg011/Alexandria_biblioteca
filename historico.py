@@ -11,3 +11,8 @@ emprestimos = [
 ]
 
 usuario_encontrado = usuarios[0] #Encontrar o id 1
+
+emprestimos_do_usuario = [
+    emp for emp in emprestimos
+    if emp["usuario_id"] == usuario_encontrado["id"] and emp["status"] == "Ativo"
+]
