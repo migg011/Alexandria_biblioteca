@@ -6,6 +6,7 @@ def registrar_devolucao(id_emprestimo: int, emprestimos: list, acervo: list) -> 
             emprestimo_encontrado = emp
             break
 
+
     if not emprestimo_encontrado:
         raise ValueError("Empréstimo não encontrado.")
 
