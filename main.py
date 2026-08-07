@@ -1,6 +1,5 @@
 from menu import exibir_menu, ler_opcao
 
-# Importações ajustadas (somente funções utilizadas)
 from consultas import buscar_por_titulo_parcial
 from emprestimos import realizar_emprestimo
 from livros import cadastrar_livro, listar_livros
@@ -10,9 +9,7 @@ from validacoes import ler_texto
 
 
 def main():
-    """Ponto de entrada do sistema. Controla o laço principal e a integração das rotas."""
     acervo = []
-    usuarios_lista = []
     emprestimos = []
     titulos_dict = {}
 
@@ -29,20 +26,19 @@ def main():
             break
 
         elif opcao == 1:
-            # Cadastrar livro
             print("\n--- Cadastrar Novo Livro ---")
             codigo = ler_texto("Código do livro: ")
             titulo = ler_texto("Título do livro: ")
             autor = ler_texto("Autor do livro: ")
             try:
                 quantidade = int(ler_texto("Quantidade de exemplares: "))
-                cadastrar_livro(acervo, codigo, titulo, autor, quantidade)
-                titulos_dict[codigo] = titulo
+                sucesso = cadastrar_livro(acervo, codigo, titulo, autor, quantidade)
+                if sucesso:
+                    titulos_dict[codigo] = titulo
             except ValueError:
                 print("Erro: A quantidade deve ser um número inteiro válido.")
 
         elif opcao == 2:
-            # Listar e buscar livros
             print("\n--- Consultar Acervo ---")
             print("1 - Listar todos os livros")
             print("2 - Buscar por termo no título")
@@ -66,43 +62,33 @@ def main():
                 print("Opção de busca inválida.")
 
         elif opcao == 3:
-
             print("\n--- Cadastrar Usuário ---")
             cadastrar_usuario()
 
         elif opcao == 4:
-            # Realizar empréstimo
             print("\n--- Realizar Empréstimo ---")
             cod_usuario = ler_texto("Código do usuário: ")
             cod_livro = ler_texto("Código do livro: ")
-            realizar_emprestimo(cod_usuario, cod_livro, usuarios_lista, acervo, emprestimos)
-
+            realizar_emprestimo(cod_usuario, cod_livro, None, acervo, emprestimos)
 
         elif opcao == 5:
-
             print("\n--- Realizar Devolução ---")
-
+            entrada_id = ler_texto("ID do Empréstimo: ")
             try:
-
-                id_emp = int(ler_texto("ID do Empréstimo: "))
-
+                id_emp = int(entrada_id)
                 resultado = registrar_devolucao(id_emp, emprestimos, acervo)
-
                 print(resultado)
-
             except ValueError as e:
-
-                print(f"[Erro] {e}")
-
+                if "invalid literal" in str(e):
+                    print("[Erro] O ID do empréstimo deve ser um número inteiro válido.")
+                else:
+                    print(f"[Erro] {e}")
 
         elif opcao == 6:
-
-            # Exibir relatórios
-
             print("\n--- Relatório Geral ---")
+            imprimir_relatorio(titulos_dict, acervo, emprestimos)
 
         elif opcao == 7:
-            # Histórico/Listagem de Usuários
             print("\n--- Lista de Usuários ---")
             listar_usuarios()
 
