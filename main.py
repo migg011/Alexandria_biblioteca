@@ -66,7 +66,7 @@ def main():
                 print("Opção de busca inválida.")
 
         elif opcao == 3:
-            # Cadastrar usuário
+
             print("\n--- Cadastrar Usuário ---")
             cadastrar_usuario()
 
@@ -77,23 +77,29 @@ def main():
             cod_livro = ler_texto("Código do livro: ")
             realizar_emprestimo(cod_usuario, cod_livro, usuarios_lista, acervo, emprestimos)
 
+
         elif opcao == 5:
-            # Realizar devolução
+
             print("\n--- Realizar Devolução ---")
+
             try:
+
                 id_emp = int(ler_texto("ID do Empréstimo: "))
-                # Converte o acervo (list) em dict para atender a assinatura do módulo relatorios
-                acervo_dict = {str(livro['codigo']): livro for livro in acervo}
-                resultado = registrar_devolucao(id_emp, acervo_dict)
+
+                resultado = registrar_devolucao(id_emp, emprestimos, acervo)
+
                 print(resultado)
+
             except ValueError as e:
+
                 print(f"[Erro] {e}")
 
+
         elif opcao == 6:
+
             # Exibir relatórios
+
             print("\n--- Relatório Geral ---")
-            acervo_dict = {str(livro['codigo']): livro for livro in acervo}
-            imprimir_relatorio(titulos_dict, acervo_dict)
 
         elif opcao == 7:
             # Histórico/Listagem de Usuários
