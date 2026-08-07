@@ -9,3 +9,5 @@ emprestimos = [
     {"usuario_id": 1, "livro": "1984", "status": "Devolvido"},
     {"usuario_id": 1, "livro": "Duna", "status": "Ativo"}
 ]
+
+usuario_encontrado = usuarios[0] #Encontrar o id 1
