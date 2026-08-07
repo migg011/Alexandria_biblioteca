@@ -16,3 +16,7 @@ emprestimos_do_usuario = [
     emp for emp in emprestimos
     if emp["usuario_id"] == usuario_encontrado["id"] and emp["status"] == "Ativo"
 ]
+
+print(f"Empréstimos ativos de {usuario_encontrado['nome']}:")
+for item in emprestimos_do_usuario:
+    print(f"- Livro: {item['livro']}")
