@@ -1,6 +1,6 @@
 Alexandria Biblioteca
 
-Sistema simples de biblioteca em Python.
+Sistema de biblioteca em Python.
 
 Como rodar:
 
